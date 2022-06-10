@@ -1,0 +1,6 @@
+0 putstr How long should it be:  " , loop
+1 + dup dup loop
+putstr * "
+end
+10 puts
+end
