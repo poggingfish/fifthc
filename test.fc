@@ -1,4 +1,4 @@
-#include std.fc
+#process std.fc
 #process colors.fc
 #CONST passed 0
 #CONST failed 1
