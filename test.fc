@@ -1,0 +1,198 @@
+#include std.fc
+#process colors.fc
+#CONST passed 0
+#CONST failed 1
+#WORD passed p$greenfg println p$colorreset p!passed getvar 1 + p!passed setvar
+#WORD failed p$redfg println p$colorreset p!failed getvar 1 + p!failed setvar
+#WORD info p$cyanfg println p$colorreset
+proc main
+" Starting tests. " println
+" Testing drop " info
+5 drop 0 if ==
+" drop passed " passed
+end
+5 drop 0 if !=
+" drop failed " failed
+" Core testing function failed. Exiting " failed 1 exit
+end
+" Testing dup " info
+5 dup 5 if ==
+dup 5 if ==
+" dup passed " passed
+end
+5 if !=
+" dup failed " failed
+end
+end
+5 dup 5 if !=
+" dup failed " failed
+end
+" Testing swap " info
+2 1 swap 2 if ==
+1 if ==
+" swap passed " passed
+end
+end
+2 1 swap 1 if ==
+" swap failed " failed
+end drop
+" Testing sti " info
+" 5 " sti 5 if ==
+" sti passed " passed
+end
+" 5 " sti 5 if !=
+" sti failed " passed
+end
+" Testing negative " info
+-5 negative 1 if ==
+5 negative 0 if ==
+" negative passed " passed
+end
+end
+-5 negative 1 if !=
+" negative failed " failed
+end
+" Testing abs " info
+-5 abs 5 if ==
+" abs passed " passed
+end
+-5 abs 5 if !=
+" abs failed " failed
+end
+" Testing 1+ " info
+1 1+ 2 if ==
+" 1+ passed " passed
+end
+1 1+ 2 if !=
+" 1+ failed " failed
+end
+" Testing 1- " info
+1 1- 0 if ==
+" 1- passed " passed
+end
+1 1- 0 if !=
+" 1- failed " failed
+end
+" Testing order3 " info
+3 2 1 order3 3 if ==
+2 if ==
+1 if ==
+" order3 passed " passed
+end
+end
+end
+3 2 1 order3 3 if !=
+" order3 Failed " failed 1 4 setvar
+end
+4 getvar 1 if !=
+3 2 1 order3 drop 2 if !=
+" order3 Failed " failed 1 4 setvar
+end
+end
+4 getvar 1 if !=
+3 2 1 order3 drop drop 1 if !=
+" order3 Failed " failed 1 4 setvar
+end
+end
+" Testing basic math " info
+5 5 * 25 if ==
+" * passed " passed
+end
+5 5 * 25 if !=
+" * failed " failed
+end
+5 5 + 10 if ==
+" + passed " passed
+end
+5 5 + 10 if !=
+" + failed " failed
+end
+50 5 swap - 45 if ==
+" - passed " passed
+end
+50 5 swap - 45 if !=
+" - failed " failed
+end
+10 5 swap / 2 if ==
+" / passed " passed
+end
+10 5 swap / 2 if !=
+" / failed " failed
+end
+69 7 % 6 if ==
+" % passed " passed
+end
+69 7 % 6 if !=
+" % failed " failed
+end
+" Testing return stack " info
+5 >R 69 69 R> 5 if ==
+" R> and R> passed " passed
+end
+5 >R 69 69 R> 5 if !=
+" R> and R> failed " failed
+end
+0 4 setvar
+5 >R R@ R> 5 if ==
+5 if ==
+" R@ passed " passed
+end
+end
+5 >R R@ R> 5 if !=
+" R@ failed " failed 1 4 setvar
+end
+4 getvar 1 if !=
+5 >R R@ R> drop 5 if !=
+" R@ failed " failed
+end
+end
+" Testing std consts " info
+p!int_max 2147483647 if ==
+" int_max passed " passed
+end
+p!int_max 2147483647 if !=
+" int_max failed " failed
+end
+p!int_min -2147483648 if ==
+" int_min passed " passed
+end
+p!int_min -2147483648 if !=
+" int_min failed " failed
+end
+" Testing loops " info
+0 100 loop
+1 + dup 
+end
+dup 100 if ==
+" loop passed " passed
+end
+100 if !=
+" loop failed " failed
+end
+0 loopf
+1 + dup dup 100 if ==
+break
+end
+end
+dup 100 if ==
+" loopf passed " passed
+end
+100 if !=
+" loopf failed " failed
+end
+" Testing strings " info
+" pog " strdup strcmp 1 if ==
+" strcmp and strdup passed " passed
+end
+" pog " strdup strcmp 1 if !=
+" strcmp or strdup failed " failed
+end
+p$cyanfg
+p!passed " Passed:  " print getvar its print p!failed getvar 
+0 if == "  ( All tests passed 💕 ) " print end nl
+p!failed getvar 0 if !=
+p!failed " Failed:  " print getvar its println
+" Total tests:  " print p!passed getvar p!failed getvar + its println
+end
+p$colorreset
+end

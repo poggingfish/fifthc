@@ -1,0 +1,32 @@
+#WORD print stdout swrite
+#WORD . its print space putchar
+#WORD .* loop . end end
+#WORD putchar stdout cwrite
+#WORD println print " \n " print
+#WORD abs dup 0 swap if < dup dup - - end
+#WORD nl " \n " print
+#WORD .n . nl
+#WORD rot >R swap R> swap
+#WORD order3 rot >R swap R>
+#WORD over >R dup R> swap
+#WORD swap >R its R> sti
+#WORD dup @>R R>
+#WORD 2dup over over
+#WORD 2drop drop drop
+#WORD stdout 10
+#WORD space 32
+#WORD negative dup 0 if > 1 >R end 0 if < 0 >R end R>
+#WORD emit putchar
+#WORD 2>R swap >R >R
+#WORD 1+ 1 +
+#WORD 1- 1 swap -
+#WORD drop 511 getvar 400 setvar 511 setvar 400 getvar 511 setvar
+#WORD 2* 2 *
+#WORD ?dup dup dup 0 if == drop end
+#WORD 2swap rot >R rot R>
+#WORD clear " \e[1;1H\e[2J " print stdout fflush
+#WORD hide_cursor " \e[?25l " print
+#WORD show_cursor " \e[?25h " print
+#WORD R@ R> dup >R
+#CONST int_max 2147483647
+#CONST int_min -2147483648

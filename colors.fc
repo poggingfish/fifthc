@@ -1,0 +1,16 @@
+#process std.fc
+#MACRO colorreset " \033[0m " print
+// Foreground //
+#MACRO blackfg " \x1b[30m " print
+#MACRO whitefg " \x1b[37m " print
+#MACRO bluefg " \x1b[34m " print
+#MACRO greenfg " \x1b[32m " print
+#MACRO cyanfg " \x1b[36m " print
+#MACRO redfg " \x1b[31m " print
+// Background //
+#MACRO blackbg " \x1b[40m " print
+#MACRO whitebg " \x1b[47m " print 
+#MACRO bluebg " \x1b[44m " print
+#MACRO greenbg " \x1b[42m " print
+#MACRO cyanbg " \x1b[46m " print
+#MACRO redbg " \x1b[41m " print
