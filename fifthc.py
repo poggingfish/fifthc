@@ -314,7 +314,7 @@ def com():
     compile_time = round((compile_time_end - compile_time_start) * 1000 * 1000) # in microseconds
     print("Transpile time: " + str(compile_time) + "μs")
     compile_time_start = time.perf_counter()
-    #os.system("gcc out.c -o fout")
+    os.system("gcc out.c -o fout")
     #os.remove("out.c")
     compile_time_end = time.perf_counter()
     compile_time = round((compile_time_end - compile_time_start) * 1000)
